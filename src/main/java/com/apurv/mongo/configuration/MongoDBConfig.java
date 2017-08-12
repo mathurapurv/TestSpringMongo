@@ -13,7 +13,7 @@ public class MongoDBConfig {
 	@Bean
 	public MongoTemplate mongoTemplate() throws Exception {
 		return new MongoTemplate(mongoClientFactoryBean().getObject(), "imdb");
-	}
+	} 
 
 	@Bean
 	public MongoClientFactoryBean mongoClientFactoryBean() {

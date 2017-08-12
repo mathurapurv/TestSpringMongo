@@ -16,7 +16,7 @@ import com.apurv.mongo.service.MovieService;
 @RestController
 @RequestMapping(value = "/imdb")
 public class MovieController {
-
+ 
 	@Autowired
 	private MovieService movieService;
 
