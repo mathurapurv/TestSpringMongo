@@ -1,0 +1,7 @@
+db.imdb.insert({
+"name":"apurv",
+"year" : 1987
+})
+
+
+db.imdb.find({"movie_id":10})
