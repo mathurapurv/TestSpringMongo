@@ -20,6 +20,12 @@ public class MovieServiceImpl implements MovieService{
 	public Movie findByMovieID(Long movieId) {
 		return movieMongoDao.findByMovieID(movieId);
 	}
+
+	
+	public int deleteByMovieID(Long movieId) {
+		return movieMongoDao.delete(movieId);
+	}
+	
 	
 	@Override
 	public List<Movie> findAll() {

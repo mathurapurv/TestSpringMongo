@@ -7,9 +7,7 @@ import com.apurv.mongo.model.Movie;
 public interface MovieService {
 
 	Movie findByMovieID(Long movieId);
-
 	List<Movie> findAll();
-
 	Long createMovie(Movie movie);
-
+	int deleteByMovieID(Long movieId) ;
 }

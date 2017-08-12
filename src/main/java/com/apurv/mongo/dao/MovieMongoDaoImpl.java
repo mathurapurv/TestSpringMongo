@@ -31,6 +31,12 @@ public class MovieMongoDaoImpl implements MovieMongoDao {
 	public void save(Movie movie) {
 		mongoTemplate.save(movie);
 	}
+
+	@Override
+	public int delete(Long movieId) {
+		return mongoTemplate.remove(createQuery(Criteria.where("movie_id").is(movieId)), Movie.class).getN();
+	}
+	
 	
 	
 	private Query createQuery(Criteria c) {

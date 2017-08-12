@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 
-@Document(collection="imdb")
+@Document(collection="movies")
 public class Movie {
 
 	private Long movieId;
@@ -17,6 +17,22 @@ public class Movie {
 	private String description;
 
 	
+	public Movie(Long movieId, String movieName, Date releaseDate, String language, boolean isNetflixAvailable,
+			String description) {
+		super();
+		this.movieId = movieId;
+		this.movieName = movieName;
+		this.releaseDate = releaseDate;
+		this.language = language;
+		this.isNetflixAvailable = isNetflixAvailable;
+		this.description = description;
+	}
+
+	public Movie() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Field(value="movie_id")
 	public Long getMovieId() {
 		return movieId;

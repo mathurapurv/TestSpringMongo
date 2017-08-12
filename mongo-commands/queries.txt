@@ -1,7 +1,14 @@
-db.imdb.insert({
+db.movies.insert({
 "name":"apurv",
 "year" : 1987
 })
 
 
-db.imdb.find({"movie_id":10})
+db.movies.find({"movie_id":10})
+
+
+-- starts mongoDB server , with a valid path 
+mongod --dbpath "F:\mongodb\data"
+
+-- start client process 
+mongo

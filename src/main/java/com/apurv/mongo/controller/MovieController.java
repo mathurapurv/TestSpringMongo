@@ -33,6 +33,15 @@ public class MovieController {
 		return movieService.findByMovieID(movieId);
 	}
 	
+	
+	@RequestMapping(value = "/movie/delete/{movieId}", method = RequestMethod.GET)
+	@ResponseBody
+	public int deleteMovieByMovieID(@PathVariable("movieId") Long movieId) {
+		return movieService.deleteByMovieID(movieId);
+	}
+	
+	
+	
 	@RequestMapping(value = "/movie/dump", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Movie> getMovieByMovieID() {
