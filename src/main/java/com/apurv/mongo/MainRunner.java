@@ -23,84 +23,49 @@ public class MainRunner {
 	public static void main(String[] args) {
 		System.out.println("Start");
 		instance.initializeContext();
-		
-		// [Start] call your methods here 
-		
-		
-		
+
+		// [Start] call your methods here
+
 		instance.createMovie();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		// [End] call your methods here
 		instance.closeContext();
 		System.out.println("End");
 
 	}
-	
-	
-	private void createMovie(){
-		
-		
-		
+
+	private void createMovie() {
+
 		Long movieId = RandomGenerationUtils.randomLong(4);
-		
+
 		Movie m = new Movie();
-		m.setMovieId(movieId);;
+		m.setMovieId(movieId);
 		m.setMovieName("testmovie123");
 		m.setLanguage("Hindi");
 		m.setNetflixAvailable(true);
 		m.setDescription("random bunch");
 		m.setReleaseDate(new Date());
-		
+
 		MongoTemplate template = ctx.getBean(MongoTemplate.class);
-		
+
 		dropCollection(COLLECTION_NAME_MOVIE);
-		
+
 		template.save(m);
-		
-		
-		print("MOvies in collection : "+template.count((new Query()), COLLECTION_NAME_MOVIE));
-		
-		
-		
-		
+
+		print("MOvies in collection : " + template.count((new Query()), COLLECTION_NAME_MOVIE));
+
 	}
-	
-	
-	
-	
-	
-	
-	private void dropCollection(String collectionName){
+
+	private void dropCollection(String collectionName) {
 		MongoTemplate template = ctx.getBean(MongoTemplate.class);
 		template.dropCollection(collectionName);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	private void initializeContext() {
 		ctx = new AnnotationConfigApplicationContext("com.apurv.mongo");
 		for (String beanName : ctx.getBeanDefinitionNames())
 			print("Bean : " + beanName);
-		
+
 		print("-- Context initialized---");
 
 	}
@@ -110,10 +75,9 @@ public class MainRunner {
 			ctx.close();
 		}
 	}
-	
-	private void  print(Object obj){
-		System.out.println(">> "+ String.valueOf(obj));
+
+	private void print(Object obj) {
+		System.out.println(">> " + String.valueOf(obj));
 	}
-	
-	
+
 }

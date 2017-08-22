@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoClientFactoryBean;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.WriteResultChecking;
 
 import com.mongodb.MongoClientOptions;
 
@@ -14,7 +15,9 @@ public class MongoDBConfig {
 
 	@Bean
 	public MongoTemplate mongoTemplate() throws Exception {
-		return new MongoTemplate(mongoClientFactoryBean().getObject(), "imdb");
+		MongoTemplate template = new MongoTemplate(mongoClientFactoryBean().getObject(), "imdb");
+		template.setWriteResultChecking(WriteResultChecking.EXCEPTION);
+		return template;
 	} 
 
 	@Bean
